@@ -268,7 +268,7 @@ def parse(String description) {
 				body.each{
 					it.success.each { k, v ->
 						def spl = k.split("/")
-						//log.debug "k = ${k}, split1 = ${spl[1]}, split2 = ${spl[2]}, split3 = ${spl[3]}, split4= ${spl[4]}, value = ${v}"                            
+						log.debug "k = ${k}, split1 = ${spl[1]}, split2 = ${spl[2]}, split3 = ${spl[3]}, split4= ${spl[4]}, value = ${v}"                            
 						def devId = ""
                         def d
                         def groupScene
@@ -314,7 +314,7 @@ def parse(String description) {
 							
                             def gLights = []
                             def thisbridge = bridge.value.mac
-                            //log.debug "This Bridge ${thisbridge}"
+                            log.debug "This Bridge ${thisbridge}"
                             gLights = parent.getGLightsDNI(spl[2], thisbridge)
                             gLights.each { gl ->
                              
@@ -363,7 +363,7 @@ def parse(String description) {
 				state.groups = groups
 				
 	            body.scenes?.each { k, v -> 
-                   	//log.trace "k=${k} and v=${v}"
+                   	log.trace "k=${k} and v=${v}"
                         				
                   	scenes[k] = [id: k, label: v.name, type: "scene", lights: v.lights]
                             
