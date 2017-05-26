@@ -274,7 +274,7 @@ def updateSceneFromDevice() {
 //    }
 
     	updateScene()
-		//log.debug "Executing 'updateScene' for ${device.label} using sceneID ${myScene}."
+		log.debug "Executing 'updateScene' for ${device.label} using sceneID ${myScene}."
 	}
 }
 
