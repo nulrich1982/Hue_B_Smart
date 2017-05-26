@@ -566,7 +566,7 @@ def flash_off() {
  * Update Status
  **/
 private updateStatus(action, param, val) {
-	//log.trace "Hue B Smart Group: updateStatus ( ${param}:${val} )"
+	log.trace "Hue B Smart Group: updateStatus ( ${param}:${val} )"
 	if (action == "action") {
 		def onoffNotice = state.notisetting1
     	def otherNotice = state.notisetting2        
@@ -580,7 +580,7 @@ private updateStatus(action, param, val) {
                 		log.debug "Update Needed: Current Value of switch = false & newValue = ${val}"
                 		sendEvent(name: "switch", value: on, displayed: onoffNotice, isStateChange: true)                	     
 					} else {
-		//                log.debug "NO Update Needed for switch."                	
+		                log.debug "NO Update Needed for switch."                	
         	        }
 
                 } else {
@@ -589,7 +589,7 @@ private updateStatus(action, param, val) {
 		            	sendEvent(name: "switch", value: off, displayed: onoffNotice)
     	            	sendEvent(name: "effect", value: "none", displayed: otherNotice, isStateChange: true)    
 					} else {
-		//                log.debug "NO Update Needed for switch."                	
+		                log.debug "NO Update Needed for switch."                	
 	                }
 
                 }    
@@ -601,7 +601,7 @@ private updateStatus(action, param, val) {
                		log.debug "Update Needed: Current Value of level = ${curValue} & newValue = ${val}" 
 	            	sendEvent(name: "level", value: val, displayed: otherNotice, isStateChange: true) 
 				} else {
-	//                log.debug "NO Update Needed for level."                	
+	                log.debug "NO Update Needed for level."                	
                 }
                 
                 break
@@ -613,7 +613,7 @@ private updateStatus(action, param, val) {
                		log.debug "Update Needed: Current Value of hue = ${curValue} & newValue = ${val}" 
 	            	sendEvent(name: "hue", value: val, displayed: otherNotice, isStateChange: true) 
 				} else {
-	//                log.debug "NO Update Needed for hue."                	
+	                log.debug "NO Update Needed for hue."                	
                 }            	
                 break
             case "sat":
@@ -624,7 +624,7 @@ private updateStatus(action, param, val) {
                		log.debug "Update Needed: Current Value of saturation = ${curValue} & newValue = ${val}" 
 	            	sendEvent(name: "saturation", value: val, displayed: otherNotice, isStateChange: true) 
 				} else {
-	//                log.debug "NO Update Needed for saturation."                	
+	                log.debug "NO Update Needed for saturation."                	
                 }
                 break
 			case "ct": 
@@ -634,7 +634,7 @@ private updateStatus(action, param, val) {
                		log.debug "Update Needed: Current Value of colorTemperature = ${curValue} & newValue = ${val}" 
 	            	sendEvent(name: "colorTemperature", value: val, displayed: otherNotice, isStateChange: true) 
 				} else {
-	//                log.debug "NO Update Needed for colorTemperature."                	
+	                log.debug "NO Update Needed for colorTemperature."                	
                 }
                 break
             case "xy": 
@@ -646,7 +646,7 @@ private updateStatus(action, param, val) {
                		log.debug "Update Needed: Current Value of colormode = ${curValue} & newValue = ${val}" 
 	            	sendEvent(name: "colormode", value: val, displayed: otherNotice, isStateChange: true) 
 				} else {
-	//                log.debug "NO Update Needed for colormode."                	
+	               log.debug "NO Update Needed for colormode."                	
                 }	
                 break
             case "transitiontime":
@@ -655,7 +655,7 @@ private updateStatus(action, param, val) {
                		log.debug "Update Needed: Current Value of transitionTime = ${curValue} & newValue = ${val}"                	
 	            	sendEvent(name: "transitionTime", value: val, displayed: otherNotice, isStateChange: true)
                 } else {
-	//                log.debug "NO Update Needed for transitionTime."                	
+	                log.debug "NO Update Needed for transitionTime."                	
                 }    
                 break                
             case "effect":
@@ -664,7 +664,7 @@ private updateStatus(action, param, val) {
                		log.debug "Update Needed: Current Value of effect = ${curValue} & newValue = ${val}" 
 	            	sendEvent(name: "effect", value: val, displayed: otherNotice, isStateChange: true) 
 				} else {
-	//                log.debug "NO Update Needed for effect "                	
+	                log.debug "NO Update Needed for effect "                	
                 }
                 break
 			case "lights":
@@ -673,7 +673,7 @@ private updateStatus(action, param, val) {
                		log.debug "Update Needed: Current Value of lights = ${curValue} & newValue = ${val}" 
 	            	sendEvent(name: "lights", value: val, displayed: otherNotice, isStateChange: true) 
 				} else {
-	  //              log.debug "NO Update Needed for lights"
+	                log.debug "NO Update Needed for lights"
                 }
                 break
             case "scene":
@@ -774,7 +774,7 @@ def colorloopOff() {
  * scaleLevel
  **/
 def scaleLevel(level, fromST = false, max = 254) {
-//	log.trace "scaleLevel( ${level}, ${fromST}, ${max} )"
+	log.trace "scaleLevel( ${level}, ${fromST}, ${max} )"
     /* scale level from 0-254 to 0-100 */
     
     if (fromST) {
@@ -786,7 +786,7 @@ def scaleLevel(level, fromST = false, max = 254) {
         	return Math.round( level * 100 / max )
 		}
     }    
-//    log.trace "scaleLevel returned ${scaled}."
+    log.trace "scaleLevel returned ${scaled}."
     
 }
 
