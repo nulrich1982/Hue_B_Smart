@@ -171,7 +171,7 @@ def linkButton(params) {
         log.debug("username ${params.username}")
         
         def bridge = getUnlinkedBridges().find{it?.key?.contains(params.ssdpUSN)}
-        log.debug("line 171B bridge ${bridge}")
+        log.debug("New Bridge ${bridge} Linked")
 
 	state.user = params.username
         state.host = params.ip + ":80"
@@ -185,7 +185,7 @@ def linkButton(params) {
         d.sendEvent(name: "serialNumber", value: bridge.value.serialNumber)
         d.sendEvent(name: "username", value: params.username)
 
-        //subscribe(d, "itemDiscovery", itemDiscoveryHandler) //Was erroring for Cbuckles17
+        subscribe(d, "itemDiscovery", itemDiscoveryHandler)
 
         params.linkDone = false
         params.linkingBridge = false
@@ -794,7 +794,7 @@ def chooseSchedules(params) {
 }
 
 def createQuickfixSch(params) {
-	log.trace "Line 807A createQuickfixSch ( ${params} )"
+	log.trace "createQuickfixSch ( ${params} )"
     
     if (params.mac) {
         state.params = params;
@@ -1438,7 +1438,7 @@ def getGLightsDNI(groupId,bridgemac) {
 	log.trace "getGLightsDNI( from Group ${groupId} )"
     //def mac = state.mac
     def mac = bridgemac
-    //log.debug "${mac}"
+    log.debug "${mac}"
     def bridge = getBridge(mac)
   
     def groupLights = bridge.value.groups[groupId].lights
