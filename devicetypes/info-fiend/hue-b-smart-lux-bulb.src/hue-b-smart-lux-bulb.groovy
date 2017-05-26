@@ -268,7 +268,7 @@ def flash_off() {
  * scaleLevel
  **/
 def scaleLevel(level, fromST = false, max = 254) {
-//	log.trace "scaleLevel( ${level}, ${fromST}, ${max} )"
+	log.trace "scaleLevel( ${level}, ${fromST}, ${max} )"
     /* scale level from 0-254 to 0-100 */
     
     if (fromST) {
@@ -280,7 +280,7 @@ def scaleLevel(level, fromST = false, max = 254) {
         	return Math.round( level * 100 / max )
 		}
     }    
-//    log.trace "scaleLevel returned ${scaled}."
+    log.trace "scaleLevel returned ${scaled}."
     
 }
                 
@@ -323,7 +323,7 @@ def scaleLevel(level, fromST = false, max = 254) {
  * Update Status
  **/
 private updateStatus(action, param, val) {
-	// log.trace "Hue B Smart Lux Bulb: updateStatus ( ${param}:${val} )"
+	 log.trace "Hue B Smart Lux Bulb: updateStatus ( ${param}:${val} )"
 	if (action == "state") {
     	def onoffNotice = state.notisetting1
     	def otherNotice = state.notisetting2        
@@ -337,7 +337,7 @@ private updateStatus(action, param, val) {
                 		log.debug "Update Needed: Current Value of switch = false & newValue = ${val}"
                 		sendEvent(name: "switch", value: on, displayed: onoffNotice, isStateChange: true)                	     
 					} else {
-		//                log.debug "NO Update Needed for switch."                	
+		                log.debug "NO Update Needed for switch."                	
         	        }
 
                 } else {
@@ -346,7 +346,7 @@ private updateStatus(action, param, val) {
 		            	sendEvent(name: "switch", value: off, displayed: onoffNotice)
     	            	sendEvent(name: "effect", value: "none", displayed: otherNotice, isStateChange: true)    
 					} else {
-		  //              log.debug "NO Update Needed for switch."                	
+		                log.debug "NO Update Needed for switch."                	
 	                }
 
                 }    
@@ -358,7 +358,7 @@ private updateStatus(action, param, val) {
                		log.debug "Update Needed: Current Value of level = ${curValue} & newValue = ${val}" 
 	            	sendEvent(name: "level", value: val, displayed: otherNotice, isStateChange: true) 
 				} else {
-	      //          log.debug "NO Update Needed for level."                	
+	               log.debug "NO Update Needed for level."                	
                 }
                 
                 break
@@ -373,7 +373,7 @@ private updateStatus(action, param, val) {
                		log.debug "Update Needed: Current Value of reachable = ${curValue} & newValue = ${val}" 
 	            	sendEvent(name: "reachable", value: val, displayed: otherNotice, isStateChange: true) 
 				} else {
-	    //            log.debug "NO Update Needed: Current Value of reachable = ${curValue} & newValue = ${val}"                	
+	               log.debug "NO Update Needed: Current Value of reachable = ${curValue} & newValue = ${val}"                	
                 }				
                 break
             case "transitiontime":
@@ -382,7 +382,7 @@ private updateStatus(action, param, val) {
                		log.debug "Update Needed: Current Value of transitionTime = ${curValue} & newValue = ${val}"                	
 	            	sendEvent(name: "transitionTime", value: val, displayed: otherNotice, isStateChange: true)
                 } else {
-	     //           log.debug "NO Update Needed for transitionTime."                	
+	               log.debug "NO Update Needed for transitionTime."                	
                 }    
                 break
             case "alert":
